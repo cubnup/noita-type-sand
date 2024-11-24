@@ -1,0 +1,22 @@
+
+              if(screen[y][x].state=="water"){
+                let lcount=0;
+                let rcount=0;     
+                for(let i=0;i<x;i++){
+                  lcount++;
+                  if(x-i==0||screen[y][x-i].state=="sand")i=w
+                }
+                for(let i=0;i<w-x;i++){
+                  rcount++;
+                  if(x+i==w||screen[y][x+i].state=="sand")i=w
+                }
+                if(x<w-1)if(rcount>lcount||screen[y][x+1].state=="void"){
+                  screen[y][x].state="void"
+                  screen[y][x+1].state="waterf"
+                  moved=true;
+                }if(x>0)if(lcount>rcount||screen[y][x-1].state=="void"){
+                  screen[y][x].state="void"
+                  screen[y][x-1].state="waterf"
+                  moved=true;
+                }
+              }
